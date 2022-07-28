@@ -6,6 +6,8 @@
 */
 
 #include <Dele72.h>           // provides some 'secret' constants @TODO: you can delete this line
+
+#include <PolledTimeout.h>
 #include <ESP8266WiFi.h>      // to create a WiFi Client (https://arduino-esp8266.readthedocs.io/en/latest/esp8266wifi/readme.html)
 #include <WiFiClientSecure.h> // see expl.: https://github.com/espressif/arduino-esp32/blob/master/libraries/WiFiClientSecure/examples/WiFiClientSecure/WiFiClientSecure.ino
 #include <Wire.h>             // to communicate via I2C (https://www.arduino.cc/en/Reference/Wire)
@@ -29,7 +31,8 @@ const char* host                           = HostConstants::DATA_HOST;
 const char* url                            = HostConstants::URL_DATAHOME;
 const uint16_t port                        = 443;                                // Port to start with SSL (https) connection
 // const char* fingerprint                    = HostConstants::MAIN_FINGERPRINT256; // fingerprint sha1 or sha-256 for SSL cert validation; @TODO: change this to your value (like `urlTest`)
-unsigned char MYROOT_CA[sizeof(ROOT_CA)-1] = {};  // this will be filled later with my root certificate (ssl)
+//unsigned char MYROOT_CA[sizeof(ROOT_CA)-1] = {};  // this will be filled later with my root certificate (ssl)
+#define MYROOT_CA ROOT_CA
 
 // uint16_t       Unsigned      0 to +65,535                  // good to know :)
 // uint32_t       Unsigned      0 to +4,294,967,295           // same
@@ -221,11 +224,13 @@ void connectWebserver() {
   Serial.print(asctime(&timeinfo));
 
   /* copy Dele72.ROOT_CA to local MYROOT_CA */
+  /*
   for (int i = 0; i < sizeof(ROOT_CA); i++) {
     MYROOT_CA[i] = ROOT_CA[i]; //copies UserInput in reverse to TempInput
     // printf("%c", MYROOT_CA[i]);
   }
   MYROOT_CA[sizeof(ROOT_CA)] = '\0'; // adds NULL character at end  
+  */
 
   /*
   // print copied certificate to Serial Monitor
