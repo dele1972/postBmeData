@@ -2,10 +2,59 @@
 
 ## ToDo
 
-- die verschiedenen grounds (solar/main(akku)) in der kicad schematic einbauen (aus fritz erkennbar)
+- beim Aufbau die `Dele72.h` beschreiben
+  - welche Variablen sind dort hinterlegt?
+  - wie kommt man zu den Werten?
+- prototyp Schaltung auf einer Lochrasterplatine löten
+- Gehäuse mit FreeCad erstellen
+  - Temperaturfühler auslagern?
+  - Solarpanel als Deckel oder (auch) auslagern?
+- Gehäuse drucken
+
+## Zum Projekt
+
+### Ziele
+
+- Auf der Terrasse (und später an anderen Outdoor Locations am Haus) sollen Sensoren platziert werden
+  - gesteuert über ESP-8266 Module (12f)
+  - W-LAN Anbindung
+    - soll aus gegebenen Konfigurationen die mit der stärksten Signalquelle verwenden
+  - 'autarker' Strom durch Kombination von Solar und Akku
+- Daten sollen an eine Datenbank (bei meinem Webhoster/Domain) gespeichert werden
+  - Wetterdaten
+    - Temperatur und Luftdruck
+      - später auch Bodenfeuchte, Niederschlagmenge, Windstärke, Windrichtung, Helligkeit (Tag/Nacht-Erkennung, Bewölkungsgrad)
+    - Stromdaten
+      - aktuelle Spannung aus Solarmodul
+      - aktuelle Spannung aus Akku (Ladelevel?)
+    - W-LAN Daten
+      - verwendete SSID
+      - Signalstärke
+
+### Aufbau
+
+- Für die Verbindungsdaten habe ich eine eigene Library erstellt (`Dele72.h`)
+
+### Probleme/Auffälligkeiten
+
+- Das Solarmodul liefert im Peak ~6V, damit mehr Strom als gespeichert/verbraucht werden kann
+  - jedenfalls nach der aktuellen Schaltung
 
 ## Teile
 
+- Solarpanel *SM6150*
+  - Hersteller: [Sol-Expert group](https://www.sol-expert-group.de/)
+  - U=6V
+  - I=150mA
+  - Maße
+    - 11,9cm
+    - 5,9cm
+- Akku
+  - LiFePo4
+  - 18650
+    - [Diskussion 26650 Batterie gegen 18650 Batterie](https://de.large.net/news/8bu43pg.html)
+  - 3,3V
+  - 3300mAh(?) 
 - BAT43 Schottky Diode
 - LM317-220 Spannungsregler
   - [reichelt](https://www.reichelt.de/de/de/spannungsregler-einstellbar-1-2--37-v-to-220-lm-317-220-sg-p120703.html?PROVID=2788&gclid=Cj0KCQjwxIOXBhCrARIsAL1QFCZ3Ao9AW30IVLPCD0Lk1vRn-jrn7CNYoFOq6578vglwBVS0JN1fmZ0aAiRuEALw_wcB&&r=1)
