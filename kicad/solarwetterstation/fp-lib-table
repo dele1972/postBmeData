@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name meineFootprints)(type KiCad)(uri /home/lederich/dev/privat/arduino/sketches/postBmeData/kicad/meineFootprints.pretty)(options "")(descr ""))
+  (lib (name dele72)(type KiCad)(uri /home/lederich/dev/privat/arduino/sketches/postBmeData/kicad/meineFootprints/dele72.pretty)(options "")(descr ""))
+)

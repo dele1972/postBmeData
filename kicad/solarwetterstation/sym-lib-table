@@ -1,3 +1,4 @@
 (sym_lib_table
   (lib (name MySensor)(type Legacy)(uri ${KIPRJMOD}/MySensor.lib)(options "")(descr ""))
+  (lib (name deleSymbols)(type Legacy)(uri /home/lederich/dev/privat/arduino/sketches/postBmeData/kicad/meineSymbole/deleSymbols.lib)(options "")(descr ""))
 )
